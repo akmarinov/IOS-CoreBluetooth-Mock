@@ -187,6 +187,7 @@ open class CBMCharacteristic: CBMAttribute {
         self.service = service
         self._uuid = characteristic._uuid
         self.properties = characteristic.properties
+        self.value = characteristic.value
         self.isNotifying = false
     }
 }
