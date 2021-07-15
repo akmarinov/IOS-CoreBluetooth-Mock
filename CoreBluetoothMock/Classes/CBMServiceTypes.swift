@@ -173,12 +173,13 @@ open class CBMCharacteristic: CBMAttribute {
     /// - Parameters:
     ///   - uuid: The Bluetooth UUID of the characteristic.
     ///   - properties: The properties of the characteristic.
-    init(type uuid: CBMUUID, properties: CBMCharacteristicProperties) {
+    init(type uuid: CBMUUID, value: Data? = nil, properties: CBMCharacteristicProperties) {
         self.identifier = UUID()
         self.service = uninitializedService
         self._uuid = uuid
         self.properties = properties
         self.isNotifying = false
+        self.value = value
     }
     
     init(shallowCopy characteristic: CBMCharacteristic, in service: CBMService) {
@@ -228,9 +229,9 @@ open class CBMCharacteristicMock: CBMCharacteristic {
     ///   - uuid: The Bluetooth UUID of the characteristic.
     ///   - properties: The properties of the characteristic.
     ///   - descriptors: Optional list of descriptors.
-    public init(type uuid: CBMUUID, properties: CBMCharacteristicProperties,
+    public init(type uuid: CBMUUID, properties: CBMCharacteristicProperties, value: Data? = nil,
                 descriptors: CBMDescriptorMock...) {
-        super.init(type: uuid, properties: properties)
+        super.init(type: uuid, value: value, properties: properties)
         self.descriptors = descriptors
     }
     
