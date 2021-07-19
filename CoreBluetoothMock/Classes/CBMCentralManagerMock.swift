@@ -1203,7 +1203,7 @@ open class CBMPeripheralMock: CBMPeer, CBMPeripheral {
                     if DispatchQueue.main.label == self.queue.label {
                         increaseBuffer()
                     } else {
-                        self.queue.sync {
+                        self.queue.async {
                             increaseBuffer()
                         }
                     }
